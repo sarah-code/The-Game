@@ -9,6 +9,9 @@ import java.nio.*;
 import static org.lwjgl.glfw.Callbacks.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
+import static org.lwjgl.opengl.GL15.glBindBuffer;
+import static org.lwjgl.opengl.GL20C.glVertexAttribPointer;
 import static org.lwjgl.system.MemoryStack.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
@@ -19,9 +22,13 @@ public class View {
 
     public void run() {
         System.out.println("Welcome to the debugger of The Game.");
+        var sysProps = System.getProperties();
+        sysProps.list(System.out);
+        System.out.println(System.getProperty("os.name"));
         System.out.println(window);
         init();
         loop();
+
         // Free the window callbacks and destroy the window
         glfwFreeCallbacks(window);
         glfwDestroyWindow(window);
@@ -94,7 +101,7 @@ public class View {
 
         // Set the clear color
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
+       
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
@@ -107,6 +114,7 @@ public class View {
             glfwPollEvents();
         }
     }
+    public
 
 }
 
